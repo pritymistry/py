@@ -1,0 +1,178 @@
+##Q.1. Write a Python program to input principal amount, rate of interest and number of years with
+##appropriate prompts. Find simple interest and display all the details in the following format:
+##Principal Amount : Rs. __________
+##Rate of Interest : ____ %
+##Number of Years : ____
+##Simple Interest : Rs. __________
+##Maturity Amount : Rs. __________
+amount = float(input("Enter principal amount: "))
+rate = float(input("Enter rate of interest: "))
+year = float(input("Enter no. of year: "))
+interest = amount * (rate/100) * year
+maturity = amount + interest
+
+print("\nPrincipal Amount : Rs. %.2f"%amount) 
+print("Rate of Interest : %.2f%%"%rate)
+print("Number of Years  : %.1f"%year)
+print("Simple Interest  : Rs. %.2f"%interest)
+print("Maturity Amount  : Rs. %.2f"%maturity)
+
+
+
+##Q.2. Write a Python program to find area of i) Square, ii) Rectangle, iii) Circle. Take input of all the
+##values need to calculate these areas from the user with appropriate prompts. Display all the
+##values with appropriate titles.
+print(20*('-')+'Square'+20*('-'))
+l = float(input("Enter value of length: "))
+print("Area of square: %.2f"%(l*l))
+
+print(20*('-')+'Rectangle'+20*('-'))
+h = float(input("Enter value of height: "))
+w = float(input("Enter value of width: "))
+print("Area of rectangle: %.2f"%(h*w))
+
+print(20*('-')+'Circle'+20*('-'))
+r = float(input("Enter value of radius: "))
+print("Area of circle: %.2f"%(3.14 * (r*r)))
+
+
+
+##Q.3 Write a Python program which prompts the user to input temperature in Celsius, convert the
+##temperature to Fahrenheit and display both the values with appropriate titles. Use the following
+##formular: T(°F) = T(°C)× 9/5 + 32
+
+temp_c = float(input("Enter temperature in Celsius: "))
+temp_f = temp_c * 9/5 + 32
+print("Celsius: %.0f°C"%temp_c)
+print("Fahrenheit: %.0f°F"%temp_f)
+
+
+
+##Q.4 Write a Python program to input 3 numbers and find the largest. Print all the numbers, and the
+##largest among them, with appropriate titles
+a = int(input("Enter value of A: "))
+b = int(input("Enter value of B: "))
+c = int(input("Enter value of C: "))
+
+print("A: %d"%a)
+print("B: %d"%b)
+print("C: %d"%c)
+if(a > b and a > c):
+    print("\nA is largest")
+elif(b > a and b > c):
+    print("\nB is largest")
+else:
+    print("\nC is largest")
+
+
+
+##Q.5. Write a Python program to input principal amount and number of years with appropriate
+##prompts. Find simple interest and display all the details in the following format. Consider rate
+##of interest based on the following criteria. (NOTE: Use simple if..else statement to determine
+##the rate of interest)
+##Rate of interest = 5%   if number of years < 1
+##                 = 5.5% if 1 <= number of years < 3
+##                 = 6 %  if 3 <= number of years < 5
+##                 = 5.75% otherwise
+##Principal Amount : Rs. __________
+##Rate of Interest : ____ %
+##Number of Years : ____
+##Simple Interest : Rs. __________
+##Maturity Amount : Rs. __________
+
+amount = float(input("Enter principal amount: "))
+year = float(input("Enter no. of year: "))
+
+rate = 5.75
+if(year < 1):
+    rate = 5
+if(year >= 1 and year < 3):
+    rate = 5.5
+if(year >= 3 and year < 5):
+    rate = 6
+    
+interest = amount * (rate/100) * year
+maturity = amount + interest
+
+print("\nPrincipal Amount : Rs. %.2f"%amount) 
+print("Rate of Interest : %.2f%%"%rate)
+print("Number of Years  : %.1f"%year)
+print("Simple Interest  : Rs. %.2f"%interest)
+print("Maturity Amount  : Rs. %.2f"%maturity)
+
+
+
+
+##Q.6. Attempt Q.5. using Nested if.
+
+amount = float(input("Enter principal amount: "))
+year = float(input("Enter no. of year: "))
+
+if(year < 3):
+    if(year < 1):
+        rate = 5
+    else:
+        rate = 5.5
+else:
+    if(year < 5):
+        rate = 6
+    else:
+        rate = 5.75    
+    
+interest = amount * (rate/100) * year
+maturity = amount + interest
+
+print("\nPrincipal Amount : Rs. %.2f"%amount) 
+print("Rate of Interest : %.2f%%"%rate)
+print("Number of Years  : %.1f"%year)
+print("Simple Interest  : Rs. %.2f"%interest)
+print("Maturity Amount  : Rs. %.2f"%maturity)
+
+
+
+##Q.7. Attempt Q.5. using shorthand if..else.
+
+amount = float(input("Enter principal amount: "))
+year = float(input("Enter no. of year: "))
+
+if(year < 1):
+    rate = 5
+elif(year >= 1 and year < 3):
+    rate = 5.5
+elif(year >= 3 and year < 5):
+    rate = 6
+else:
+    rate = 5.75
+
+interest = amount * (rate/100) * year
+maturity = amount + interest
+
+print("\nPrincipal Amount : Rs. %.2f"%amount) 
+print("Rate of Interest : %.2f%%"%rate)
+print("Number of Years  : %.1f"%year)
+print("Simple Interest  : Rs. %.2f"%interest)
+print("Maturity Amount  : Rs. %.2f"%maturity)
+
+
+
+
+
+##Q.8. Write a Python program to input 3 numbers and find the largest. Print all the numbers, and the
+##largest among them, with appropriate titles. Display appropriate message and exit from the
+##program if any of these inputs is not a numeric value.
+try:
+    a = int(input("Enter value of A: "))
+    b = int(input("Enter value of B: "))
+    c = int(input("Enter value of C: "))
+
+    print("A: %d"%a)
+    print("B: %d"%b)
+    print("C: %d"%c)
+    if(a > b and a > c):
+        print("\nA is largest")
+    elif(b > a and b > c):
+        print("\nB is largest")
+    else:
+        print("\nC is largest")
+except ValueError:
+    print("Only integer value is allowed.")
