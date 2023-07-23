@@ -1,0 +1,522 @@
+----------------------User/Client side----------------
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Movie Recommendation System</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    /* Add custom styles here */
+    body {
+      padding-top: 60px;
+    }
+    .jumbotron {
+      background-color: #f8f9fa;
+    }
+    .movie-card {
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      padding: 10px;
+      margin-bottom: 20px;
+      cursor: pointer;
+    }
+    .movie-card h4 {
+      margin-top: 0;
+    }
+    footer {
+      background-color: #f8f9fa;
+      padding: 10px 0;
+    }
+    .login-registration-container {
+      max-width: 400px;
+      margin: 0 auto;
+      margin-top: 50px;
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <a class="navbar-brand" href="#">Movie Recommendation System</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Movies</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Categories
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <a class="dropdown-item" href="#">Action</a>
+            <a class="dropdown-item" href="#">Comedy</a>
+            <a class="dropdown-item" href="#">Drama</a>
+            <a class="dropdown-item" href="#">Horror</a>
+            <a class="dropdown-item" href="#">Romance</a>
+            <a class="dropdown-item" href="#">Sci-Fi</a>
+          </div>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Recommendations</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#" data-toggle="modal" data-target="#loginModal">Sign In</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#" data-toggle="modal" data-target="#registrationModal">Sign Up</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="container">
+    <div class="jumbotron">
+      <h1>Welcome to the Movie Recommendation System</h1>
+      <p>Get personalized movie recommendations based on your preferences.</p>
+      <a href="#" class="btn btn-primary">Get Started</a>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6">
+        <div class="movie-card" data-toggle="modal" data-target="#movieModal1">
+          <img src="movie1.jpg" alt="Movie 1" class="img-fluid">
+          <h4>Movie 1</h4>
+          <p>Director: Director 1</p>
+          <p>Genre: Genre 1</p>
+          <p>Rating: 8.5</p>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="movie-card" data-toggle="modal" data-target="#movieModal2">
+          <img src="movie2.jpg" alt="Movie 2" class="img-fluid">
+          <h4>Movie 2</h4>
+          <p>Director: Director 2</p>
+          <p>Genre: Genre 2</p>
+          <p>Rating: 7.8</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- More movie cards here -->
+
+  </div>
+
+  <!-- Movie Modal 1 -->
+  <div class="modal fade" id="movieModal1" tabindex="-1" role="dialog" aria-labelledby="movieModal1Label" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="movieModal1Label">Movie 1</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <img src="movie1.jpg" alt="Movie 1" class="img-fluid mb-3">
+          <p>Director: Director 1</p>
+          <p>Genre: Genre 1</p>
+          <p>Rating: 8.5</p>
+          <p>Cast: Actor 1, Actor 2, Actor 3</p>
+          <p>Description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum eget lobortis sapien.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Movie Modal 2 -->
+  <div class="modal fade" id="movieModal2" tabindex="-1" role="dialog" aria-labelledby="movieModal2Label" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="movieModal2Label">Movie 2</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <img src="movie2.jpg" alt="Movie 2" class="img-fluid mb-3">
+          <p>Director: Director 2</p>
+          <p>Genre: Genre 2</p>
+          <p>Rating: 7.8</p>
+          <p>Cast: Actor 4, Actor 5, Actor 6</p>
+          <p>Description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum eget lobortis sapien.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Login Modal -->
+  <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
+    <!-- Modal content here (same as before) -->
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="loginModalLabel">Sign In</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="form-group">
+                <label for="loginEmail">Email address</label>
+                <input type="email" class="form-control" id="loginEmail" placeholder="Enter your email">
+              </div>
+              <div class="form-group">
+                <label for="loginPassword">Password</label>
+                <input type="password" class="form-control" id="loginPassword" placeholder="Enter your password">
+              </div>
+              <button type="submit" class="btn btn-primary">Sign In</button>
+            </form>
+          </div>
+        </div>
+      </div>
+  </div>
+
+  <!-- Registration Modal -->
+  <div class="modal fade" id="registrationModal" tabindex="-1" role="dialog" aria-labelledby="registrationModalLabel" aria-hidden="true">
+    <!-- Modal content here (same as before) -->
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="registrationModalLabel">Sign Up</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="form-group">
+                <label for="signupName">Name</label>
+                <input type="text" class="form-control" id="signupName" placeholder="Enter your name">
+              </div>
+              <div class="form-group">
+                <label for="signupEmail">Email address</label>
+                <input type="email" class="form-control" id="signupEmail" placeholder="Enter your email">
+              </div>
+              <div class="form-group">
+                <label for="signupPassword">Password</label>
+                <input type="password" class="form-control" id="signupPassword" placeholder="Enter your password">
+              </div>
+              <button type="submit" class="btn btn-primary">Sign Up</button>
+            </form>
+          </div>
+        </div>
+      </div>
+  </div>
+
+  <footer class="fixed-bottom">
+    <div class="container text-center">
+      <span>&copy; 2023 Movie Recommendation System. All rights reserved.</span>
+    </div>
+  </footer>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
+
+
+
+-------------------login page -----------------------------------
+
+
+<?php
+session_start();
+
+// Check if user is already logged in
+if(isset($_SESSION['admin_logged_in']) && $_SESSION['admin_logged_in'] === true){
+  // Redirect to admin dashboard or any other page
+  header("Location: admin_dashboard.php");
+  exit;
+}
+
+// Check if the login form is submitted
+if(isset($_POST['login'])) {
+  $username = "admin"; // Replace with your actual admin username
+  $password = "password"; // Replace with your actual admin password
+
+  $input_username = $_POST['username'];
+  $input_password = $_POST['password'];
+
+  // Verify the admin credentials
+  if($input_username === $username && $input_password === $password) {
+    // Set admin session
+    $_SESSION['admin_logged_in'] = true;
+
+    // Redirect to admin dashboard or any other page
+    header("Location: admin_dashboard.php");
+    exit;
+  } else {
+    $error = "Invalid username or password.";
+  }
+}
+?>
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Login - Admin Panel</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4 offset-md-4 mt-5">
+        <h2 class="text-center">Admin Login</h2>
+        <form method="POST">
+          <?php if(isset($error)) { ?>
+            <div class="alert alert-danger"><?php echo $error; ?></div>
+          <?php } ?>
+          <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" class="form-control" id="username" name="username" required>
+          </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" class="form-control" id="password" name="password" required>
+          </div>
+          <button type="submit" name="login" class="btn btn-primary btn-block">Login</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
+
+
+
+-----------------------admin_dashboard.php--------------------------
+
+<?php
+session_start();
+
+// Check if user is not logged in
+if(!isset($_SESSION['admin_logged_in']) || $_SESSION['admin_logged_in'] !== true){
+  // Redirect to login page
+  header("Location: login.php");
+  exit;
+}
+
+// Logout logic
+if(isset($_POST['logout'])) {
+  // Unset admin session
+  session_unset();
+  session_destroy();
+
+  // Redirect to login page
+  header("Location: login.php");
+  exit;
+}
+?>
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Admin Dashboard</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4 offset-md-4 mt-5">
+        <h2 class="text-center">Admin Dashboard</h2>
+        <form method="POST">
+          <button type="submit" name="logout" class="btn btn-primary btn-block">Logout</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+------------------------another login registration pagess--------------------
+
+----------------------user_dashboard--------------------------------
+<?php
+session_start();
+
+// Check if user is not logged in
+if(!isset($_SESSION['user_logged_in']) || $_SESSION['user_logged_in'] !== true){
+  // Redirect to login page
+  header("Location: login.php");
+  exit;
+}
+
+// Logout logic
+if(isset($_POST['logout'])) {
+  // Unset user session
+  session_unset();
+  session_destroy();
+
+  // Redirect to login page
+  header("Location: login.php");
+  exit;
+}
+?>
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>User Dashboard</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4 offset-md-4 mt-5">
+        <h2 class="text-center">User Dashboard</h2>
+        <form method="POST">
+          <button type="submit" name="logout" class="btn btn-primary btn-block">Logout</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
+
+
+-----------------------registration.php---------------------------
+
+<?php
+session_start();
+
+// Check if user is already logged in
+if(isset($_SESSION['user_logged_in']) && $_SESSION['user_logged_in'] === true){
+  // Redirect to user dashboard or any other page
+  header("Location: user_dashboard.php");
+  exit;
+}
+
+// Check if the registration form is submitted
+if(isset($_POST['register'])) {
+  $username = $_POST['username'];
+  $password = $_POST['password'];
+
+  // Save user credentials in a database or file
+  // In this example, we will store the credentials in a file
+  $file = 'users.txt';
+  $data = $username . ':' . $password . PHP_EOL;
+  file_put_contents($file, $data, FILE_APPEND);
+
+  // Redirect to login page after successful registration
+  header("Location: login.php");
+  exit;
+}
+?>
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>User Registration</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4 offset-md-4 mt-5">
+        <h2 class="text-center">User Registration</h2>
+        <form method="POST">
+          <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" class="form-control" id="username" name="username" required>
+          </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" class="form-control" id="password" name="password" required>
+          </div>
+          <button type="submit" name="register" class="btn btn-primary btn-block">Register</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
+
+----------------------------------login.php------------------------------------------------------
+
+
+<?php
+session_start();
+
+// Check if user is already logged in
+if(isset($_SESSION['user_logged_in']) && $_SESSION['user_logged_in'] === true){
+  // Redirect to user dashboard or any other page
+  header("Location: user_dashboard.php");
+  exit;
+}
+
+// Check if the login form is submitted
+if(isset($_POST['login'])) {
+  $username = $_POST['username'];
+  $password = $_POST['password'];
+
+  // Authenticate user credentials
+  // In this example, we will check the credentials against the saved file
+  $file = 'users.txt';
+  $credentials = file_get_contents($file);
+  $credentials = explode(PHP_EOL, $credentials);
+
+  foreach($credentials as $credential) {
+    $user = explode(':', $credential);
+
+    if($user[0] === $username && $user[1] === $password) {
+      // Set user session
+      $_SESSION['user_logged_in'] = true;
+
+      // Redirect to user dashboard or any other page
+      header("Location: user_dashboard.php");
+      exit;
+    }
+  }
+
+  $error = "Invalid username or password.";
+}
+?>
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>User Login</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4 offset-md-4 mt-5">
+        <h2 class="text-center">User Login</h2>
+        <form method="POST">
+          <?php if(isset($error)) { ?>
+            <div class="alert alert-danger"><?php echo $error; ?></div>
+          <?php } ?>
+          <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" class="form-control" id="username" name="username" required>
+          </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" class="form-control" id="password" name="password" required>
+          </div>
+          <button type="submit" name="login" class="btn btn-primary btn-block">Login</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
+
+
