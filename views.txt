@@ -1,0 +1,117 @@
+//tag.blade.php
+@extends('layouts.dashboard')
+
+@section('content')
+
+<div class="container">
+    <div class="container-fluid">
+        <div class="d-sm-flex justify-content-between align-items-center mb-4">
+            <h3 class="text-dark mb-0">TAG</h3>
+        </div>
+        <!-- Add Button for Add Cast Modal -->
+        <div class="container mt-4 ">
+            <a href="/tag/create" class="btn btn-primary">Add TAG</a>
+
+        </div>
+
+
+        <!-- Table to display cast records -->
+        <div class="container mt-4">
+            <table class="table" id="cast-table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    @foreach($tags as $tag)
+                    <tr>
+                        <td>{{$tag->id}}</td>
+                        <td>{{$tag->name}}</td>
+                        <td>
+                            <a href="/tag/{{$tag->id}}/edit" class="btn btn-primary">Edit</a>
+                            <form action="/tag/{{$tag->id}}" method="post">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger mt-2">Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                    @endforeach
+
+                </tbody>
+            </table>
+        </div>
+
+
+    </div>
+</div>
+
+
+
+
+
+@endsection
+
+//movie.blade.php
+@extends('layouts.dashboard')
+
+@section('content')
+
+<div class="container">
+    <div class="container-fluid">
+        <div class="d-sm-flex justify-content-between align-items-center mb-4">
+            <h3 class="text-dark mb-0">MOVIE</h3>
+        </div>
+        <!-- Add Button for Add Cast Modal -->
+        <div class="container mt-4 ">
+            <a href="/movie/create" class="btn btn-primary">Add Movie</a>
+
+        </div>
+
+
+        <!-- Table to display cast records -->
+        <div class="container mt-4">
+            <table class="table" id="cast-table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    @foreach($movies as $movie)
+                    <tr>
+                        <td>{{$movie->id}}</td>
+                        <td>{{$movie->title}}</td>
+                        <td>
+                            <a href="/movie/{{$movie->id}}/details" class="btn btn-secondary">Details</a>
+                            <a href="/movie/{{$movie->id}}/edit" class="btn btn-primary">Edit</a>
+                            <form action="/movie/{{$movie->id}}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger">Delete</button>
+
+                            </form>
+                        </td>
+                    </tr>
+                    @endforeach
+
+                </tbody>
+            </table>
+        </div>
+
+
+    </div>
+</div>
+
+
+
+
+
+@endsection

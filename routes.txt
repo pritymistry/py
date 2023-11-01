@@ -1,0 +1,72 @@
+<?php
+
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\TagController;
+use App\Http\Controllers\CastController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\GenreController;
+use App\Http\Controllers\MovieController;
+use App\Http\Controllers\WriterController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\DirectorController;
+use App\Http\Controllers\LanguageController;
+use App\Http\Controllers\MovieHasTagController;
+use App\Http\Controllers\MovieHasCastController;
+use App\Http\Controllers\MovieHasGenreController;
+use App\Http\Controllers\MovieHasWriterController;
+use App\Http\Controllers\MovieHasCategoryController;
+use App\Http\Controllers\MovieHasDirectorController;
+use App\Http\Controllers\MovieHasLanguageController;
+use App\Http\Controllers\UserHasTagPreferenceController;
+use App\Http\Controllers\UserHasCastPreferenceController;
+use App\Http\Controllers\UserHasGenrePreferenceController;
+use App\Http\Controllers\UserHasWriterPreferenceController;
+use App\Http\Controllers\UserHasCategoryPreferenceController;
+use App\Http\Controllers\UserHasDirectorPreferenceController;
+use App\Http\Controllers\UserHasLanguagePreferenceController;
+
+/*
+|--------------------------------------------------------------------------
+| Web Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register web routes for your application. These
+| routes are loaded by the RouteServiceProvider within a group which
+| contains the "web" middleware group. Now create something great!
+|
+*/
+
+Route::get('/', function () {
+    return view('welcome');
+});
+
+Auth::routes();
+
+Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::resource('/cast', CastController::class);
+Route::resource('/category', CategoryController::class);
+Route::resource('/movie', MovieController::class);
+Route::get('/movie/{id}/details', [MovieController::class, 'details']);
+Route::post('/movie/details', [MovieController::class, 'update_details'])->name('movie.update_details');
+Route::resource('/director', DirectorController::class);
+Route::resource('/genre', GenreController::class);
+Route::resource('/language', LanguageController::class);
+Route::resource('/tag', TagController::class);
+Route::resource('/writer', WriterController::class);
+Route::resource('/user', UserController::class);
+Route::resource('/movieHasCast', MovieHasCastController::class);
+Route::resource('/movieHasCategory', MovieHasCategoryController::class);
+Route::resource('/movieHasDirector', MovieHasDirectorController::class);
+Route::resource('/movieHasGenre', MovieHasGenreController::class);
+Route::resource('/movieHasLanguage', MovieHasLanguageController::class);
+Route::resource('/movieHasTag', MovieHasTagController::class);
+Route::resource('/movieHasWriter', MovieHasWriterController::class);
+Route::resource('/userHasCastPrefrence', UserHasCastPreferenceController::class);
+Route::resource('/userHasCategoryPrefrence', UserHasCategoryPreferenceController::class);
+Route::resource('/userHasDirectorPrefrence', UserHasDirectorPreferenceController::class);
+Route::resource('/userHasGenrePrefrence', UserHasGenrePreferenceController::class);
+Route::resource('/userHasLanguagePrefrence', UserHasLanguagePreferenceController::class);
+Route::resource('/userHasTagPrefrence', UserHasTagPreferenceController::class);
+Route::resource('/userHasWriterPrefrence', UserHasWriterPreferenceController::class);
